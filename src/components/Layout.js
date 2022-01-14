@@ -12,36 +12,96 @@ class Layout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            groceries: [...props.groceries]
+            currentList: 'default',
+            lists: [
+                {
+                    name: 'default',
+                    groceries: [...props.groceries]
+                }
+            ]
         };
     }
-    // add new items to the grocery list
-    addItem = (newItem) => {
+    // add a new grocery list
+    addList = (newList) => {
         this.setState(prevState => ({
-            groceries: [...prevState.groceries, newItem]
-        }));
-    }
-    // conditionally render the grocery items based on whether or not they were purchased 
-    isPurchased = (id) => {
-        this.setState(prevState => ({
-                groceries: prevState.groceries.map((grocery, index) => (index === id ? { ...grocery, isPurchased: !grocery.isPurchased } : grocery))
+            ...prevState,
+            lists: [
+                ...prevState.lists,
+                {
+                    name: newList,
+                    groceries: []
+                }
+            ],
+            currentList: newList
         }));
     }
 
-    // remove item from the grocery list
+    // set selected grocery list as default
+    selectList = (list) => {
+        this.setState(prevState => ({
+            ...prevState,
+            currentList: list
+        }));
+    }
+
+    // add new items to the selected grocery list
+    addItem = (newItem) => {
+        this.setState(prevState => ({
+            ...prevState,
+            lists: prevState.lists.map(
+                list => (list.name === prevState.currentList ? { ...list, groceries: [...list.groceries, newItem] } : list)
+            )
+        }));
+    }
+
+    // conditionally render grocery items based on whether or not they were purchased 
+    isPurchased = (id) => {
+        this.setState(prevState => ({
+            ...prevState,
+            lists: prevState.lists.map(
+                list => (list.name === prevState.currentList ?
+                    {
+                        ...list,
+                        groceries: list.groceries.map((grocery, index) => (index === id ? { ...grocery, isPurchased: !grocery.isPurchased } : grocery))
+
+                    }
+                    : list))
+        }));
+    }
+
+    // remove item from the selected grocery list
     deleteItem = (id) => {
         this.setState(prevState => ({
-            groceries: prevState.groceries.filter((grocery, index) => (index !== id))
-        }));     
+            ...prevState,
+            lists: prevState.lists.map(
+                list => (list.name === prevState.currentList ?
+                    {
+                        ...list,
+                        groceries: list.groceries.filter((grocery, index) => (index !== id))
+
+                    }
+                    : list))
+        }));
     }
 
     render() {
         return (
             <>
                 <div className="container">
-                    <Header />
-                    <Form addItem={this.addItem} />
-                    <Main groceries={this.state.groceries} isPurchased={this.isPurchased} deleteItem={this.deleteItem} />
+                    <Header 
+                        currentList={this.state.currentList}
+                        lists={this.state.lists} 
+                        addList={this.addList} 
+                        selectList={this.selectList} 
+                    />
+                    <Form 
+                        addItem={this.addItem} 
+                    />
+                    <Main 
+                        groceries={this.state.lists.filter(list => list.name === this.state.currentList)[0].groceries} 
+                        isPurchased={this.isPurchased} 
+                        deleteItem={this.deleteItem} 
+                    />
                 </div>
                 <Footer />
             </>
