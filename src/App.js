@@ -1,3 +1,4 @@
+import { Component } from 'react';
 import './App.css';
 import Layout from './components/Layout';
 
@@ -22,12 +23,14 @@ const groceries = [
   }
 ];
 
-function App() {
-  return (
-    <div className="App">
-      <Layout groceries={groceries}/>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Layout groceries={groceries}/>
+      </div>
+    );
+    }
 }
 
 export default App;

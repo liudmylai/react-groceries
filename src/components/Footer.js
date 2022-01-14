@@ -1,10 +1,31 @@
-function Footer() {
-    const year = new Date().getFullYear();
+/**
+ *  Class Component
+ */
 
-    return (
-        <footer>
-            <p>Copyright © {year}</p>
-        </footer>
-    );
+import { Component } from "react";
+class Footer extends Component {
+    render() {
+        const year = new Date().getFullYear();
+        return (
+            <footer>
+                <p>Copyright © {year}</p>
+            </footer>
+        );
+    }
 }
+
 export default Footer;
+
+/**
+ *  Functional Component
+ */
+
+// function Footer() {
+//     const year = new Date().getFullYear();
+//     return (
+//         <footer>
+//             <p>Copyright © {year}</p>
+//         </footer>
+//     );
+// }
+// export default Footer;
