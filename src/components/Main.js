@@ -1,7 +1,6 @@
 /**
  *  Class Component
  */
-import { render } from "@testing-library/react";
 import { Component } from "react";
 import Grocery from "./Grocery";
 
