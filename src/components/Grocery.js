@@ -1,9 +1,21 @@
 function Grocery(props) {
-    const {grocery} = props;
+    const { grocery, id, isPurchased, deleteItem } = props;
+
+
+    const handleClick = event => {
+        isPurchased(id)
+    }
+
+    const handleDelete = event => {
+        deleteItem(id)
+    }
+
     return (
-        <div className="grocery">
-            <h1>{grocery.item}</h1>
-            <p>{grocery.quantity} <small>{grocery.units}</small></p>
+        <div className="item">
+            <li style={{ textDecoration: grocery.isPurchased ? "line-through" : "none" }} onClick={handleClick}>
+                {grocery.item} - {grocery.quantity} <small>{grocery.units}</small>
+            </li>
+            <span class="close" onClick={handleDelete}>×</span>
         </div>
     );
 }

@@ -1,7 +1,5 @@
 import './App.css';
-import Header from './components/Header';
-import Main from './components/Main';
-import Footer from './components/Footer';
+import Layout from './components/Layout';
 
 const groceries = [
   {
@@ -27,9 +25,7 @@ const groceries = [
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Main groceries={groceries}/>
-      <Footer />
+      <Layout groceries={groceries}/>
     </div>
   );
 }
