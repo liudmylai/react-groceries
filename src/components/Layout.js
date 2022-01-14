@@ -15,20 +15,20 @@ class Layout extends Component {
             groceries: [...props.groceries]
         };
     }
-
+    // add new items to the grocery list
     addItem = (newItem) => {
         this.setState(prevState => ({
             groceries: [...prevState.groceries, newItem]
         }));
     }
-
+    // conditionally render the grocery items based on whether or not they were purchased 
     isPurchased = (id) => {
         this.setState(prevState => ({
                 groceries: prevState.groceries.map((grocery, index) => (index === id ? { ...grocery, isPurchased: !grocery.isPurchased } : grocery))
         }));
     }
 
-
+    // remove item from the grocery list
     deleteItem = (id) => {
         this.setState(prevState => ({
             groceries: prevState.groceries.filter((grocery, index) => (index !== id))

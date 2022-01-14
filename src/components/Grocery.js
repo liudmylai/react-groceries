@@ -4,11 +4,11 @@
 import { Component } from "react";
 
 class Grocery extends Component {
-
+    // cross out the item when user clicks on it
     handleClick = event => {
         this.props.isPurchased(this.props.id);
     }
-
+    // delete an item from the grocery list when user clicks 'close' button
     handleDelete = event => {
         this.props.deleteItem(this.props.id);
     }

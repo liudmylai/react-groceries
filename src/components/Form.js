@@ -14,7 +14,7 @@ class Form extends Component {
             isPurchased: false
         }
     }
-
+    // update the value and set it as the current value of 'grocery' 
     handleChange = (event) => {
         let { id, value } = event.target;
 
@@ -27,7 +27,7 @@ class Form extends Component {
         }
         this.setState(prevState => ({ ...prevState, [id]: value }));
     }
-
+    // add a new item to the list when user clicks on 'Add' button
     handleClick = (event) => {
         this.props.addItem(this.state);
         this.setState({

@@ -10,7 +10,9 @@ class Main extends Component {
         return (
             <div>
                 <ul>
-                    {groceries.map((grocery, index) => 
+                    {groceries
+                        .sort((a, b) => a.item > b.item ? 1 : -1)
+                        .map((grocery, index) => 
                         <Grocery grocery={grocery} key={index} id={index} isPurchased={isPurchased} deleteItem={deleteItem}/>
                     )}
                 </ul>
