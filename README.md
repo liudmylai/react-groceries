@@ -20,3 +20,6 @@ https://liudmylai.github.io/react-groceries/
 - [x] The 'remove' button's functionality actually remove the item from the list
 - [ ] Create other ways to sort your data (ie by quantity)
 - [ ] Add a 'later' button that toggles the css (gray text, strikeout etc.) if the item should be purchased later
+
+### Credits
+Template is based on https://mm4qj.csb.app/
