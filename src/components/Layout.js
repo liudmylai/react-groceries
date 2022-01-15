@@ -7,6 +7,7 @@ import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import Form from "./Form";
+import Menu from "./Menu";
 
 class Layout extends Component {
     constructor(props) {
@@ -21,6 +22,7 @@ class Layout extends Component {
             ]
         };
     }
+    
     // add a new grocery list
     addList = (newList) => {
         this.setState(prevState => ({
@@ -88,19 +90,20 @@ class Layout extends Component {
         return (
             <>
                 <div className="container">
-                    <Header 
+                    <Menu
                         currentList={this.state.currentList}
-                        lists={this.state.lists} 
-                        addList={this.addList} 
-                        selectList={this.selectList} 
+                        lists={this.state.lists}
+                        addList={this.addList}
+                        selectList={this.selectList}
                     />
-                    <Form 
-                        addItem={this.addItem} 
+                    <Header />
+                    <Form
+                        addItem={this.addItem}
                     />
-                    <Main 
-                        groceries={this.state.lists.filter(list => list.name === this.state.currentList)[0].groceries} 
-                        isPurchased={this.isPurchased} 
-                        deleteItem={this.deleteItem} 
+                    <Main
+                        groceries={this.state.lists.filter(list => list.name === this.state.currentList)[0].groceries}
+                        isPurchased={this.isPurchased}
+                        deleteItem={this.deleteItem}
                     />
                 </div>
                 <Footer />
