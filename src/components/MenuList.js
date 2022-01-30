@@ -17,6 +17,6 @@ class MenuList extends Component {
             </ul>
         );
     }
-
 }
+
 export default MenuList;

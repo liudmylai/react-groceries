@@ -29,21 +29,18 @@ class Menu extends Component {
                 <div className="toggler-collapse"
                     style={{ display: this.state.isToggle ? "flex" : "none" }}
                 >
+                    <ListForm
+                        lists={this.props.lists}
+                        addList={this.props.addList}
+                        toogleMenu={this.toogleMenu}
+                    />
                     <MenuList
                         currentList={this.props.currentList}
                         lists={this.props.lists}
                         selectList={this.props.selectList}
                         toogleMenu={this.toogleMenu}
                     />
-                    <ListForm
-                        lists={this.props.lists}
-                        addList={this.props.addList}
-                        toogleMenu={this.toogleMenu}
-                    />
                 </div>
-                <div className="overlay" 
-                    style={{ display: this.state.isToggle ? "block" : "none" }}
-                />
             </>
         );
     }

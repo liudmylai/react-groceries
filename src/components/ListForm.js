@@ -35,20 +35,18 @@ class ListForm extends Component {
 
     render() {
         return (
-            <>
-                <div className="has-validation">
-                    <input
-                        id="name"
-                        onChange={this.handleChange}
-                        value={this.state.name}
-                        type="text"
-                    />
-                    <div className="error" style={{ display: (this.state.isExists ? 'block' : 'none') }}>This name is already used</div>
-                </div>
+            <div className="form">
+                <input
+                    id="name"
+                    onChange={this.handleChange}
+                    value={this.state.name}
+                    type="text"
+                />
+                <div className="error" style={{ display: (this.state.isExists ? 'block' : 'none') }}>This name is already used</div>
                 <div className="button" onClick={this.handleClick}>
                     <span>New List</span>
                 </div>
-            </>
+            </div>
         );
     }
 }
